@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tesla sign-in done</title>
+<body style="font-family:sans-serif;max-width:600px;margin:2em auto;padding:0 1em">
+<h2>Tesla sign-in complete</h2>
+<p>Copy this code and paste it to Donna within a few minutes (it expires quickly):</p>
+<textarea id="c" rows="4" style="width:100%" readonly></textarea>
+<button onclick="navigator.clipboard.writeText(document.getElementById('c').value)">Copy</button>
+<p id="e" style="color:#b00"></p>
+<p style="color:#666;font-size:small">This page runs only in your browser and sends nothing anywhere.</p>
+<script>
+const p=new URLSearchParams(location.search);
+document.getElementById('c').value=p.get('code')?('code='+p.get('code')+'\nstate='+(p.get('state')||'')):'';
+if(p.get('error'))document.getElementById('e').textContent='Error: '+p.get('error')+' '+(p.get('error_description')||'');
+</script></body>
